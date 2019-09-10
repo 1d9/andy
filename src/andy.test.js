@@ -12,8 +12,19 @@ const expectServer = expect(async () => {
   }
 });
 
+const expectThrowWhenStopButNoStart = expect(async () => {
+  const andy = createAndy(0);
+  try {
+    await andy.stop();
+    return assert('andy failed to throw an error when stop() was called before start', false);
+  } catch (error) {
+    return assert('andy should throw an error when stop() was called before start', true);
+  }
+});
+
 const expectAndy = expectAll('createAndy() should create an instance of an andy server', [
   expectServer,
+  expectThrowWhenStopButNoStart,
 ]);
 
 module.exports = {
