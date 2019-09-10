@@ -1,0 +1,26 @@
+{
+  "name": "andy",
+  "version": "0.1.0",
+  "description": "REST Node API for rolling dice.",
+  "main": "server.js",
+  "scripts": {
+    "test": "node test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/1d9/andy.git"
+  },
+  "keywords": [
+    "Dice"
+  ],
+  "author": "Luke Kaalim (luke@kaal.im)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/1d9/andy/issues"
+  },
+  "homepage": "https://github.com/1d9/andy#readme",
+  "devDependencies": {
+    "@lukekaalim/server": "^3.0.1",
+    "@lukekaalim/test": "^5.0.0"
+  }
+}
