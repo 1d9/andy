@@ -13,6 +13,7 @@ type Andy = {
 
 const createAndy = (port/*: number*/)/*: Andy*/ => {
   const server = createServer(createListener(createRoutes()));
+
   const start = () => new Promise(res => {
     server.listen(port, () => {
       const address = server.address();
@@ -20,9 +21,11 @@ const createAndy = (port/*: number*/)/*: Andy*/ => {
       res();
     });
   });
+
   const stop = () => new Promise((res, rej) => {
     server.close(err => err ? rej(err) : res());
   });
+
   return { start, stop };
 };
 
