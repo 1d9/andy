@@ -1,0 +1,41 @@
+version: '2.1'
+jobs:
+  test:
+    docker:
+      - image: circleci/buildpack-deps
+    steps:
+      - checkout
+      - setup_remote_docker:
+          version: 18.06.0-ce
+      - run:
+          name: Build Dev Image
+          command: docker build --target builder -t dev-container .
+      - run:
+          name: Test
+          command: docker run dev-container npm run test
+  publish:
+    environment:
+      IMAGE_NAME: lukekaalim/andy
+    docker:
+      - image: circleci/buildpack-deps
+    steps:
+      - checkout
+      - setup_remote_docker:
+          version: 18.06.0-ce
+      - run:
+          name: Login with Credentials
+          command: echo $DOCKER_PASSWORD | docker login --username=$DOCKER_USERNAME --password-stdin
+      - run:
+          name: Build Production Image
+          command: docker build -t $IMAGE_NAME:latest -t .
+      - run:
+          name: Publish Latest Image
+          command: docker push $IMAGE_NAME:latest
+workflows:
+  version: 2
+  build-and-publish:
+    jobs:
+      - test:
+      - publish:
+          requires:
+            - test
