@@ -20,7 +20,9 @@
   },
   "homepage": "https://github.com/1d9/andy#readme",
   "devDependencies": {
-    "@lukekaalim/server": "^3.0.1",
     "@lukekaalim/test": "^5.0.0"
+  },
+  "dependencies": {
+    "@lukekaalim/server": "^3.0.1"
   }
 }
