@@ -6,7 +6,7 @@ WORKDIR /home/andy
 COPY package.json package-lock.json ./
 RUN npm ci install
 COPY . ./
-RUN make build
+RUN make
 CMD [ "npm", "run" ]
 
 FROM node:12-alpine
