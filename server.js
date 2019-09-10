@@ -1,6 +1,11 @@
 // @flow strict
 const { createAndy } = require('./src/andy');
 
+const server = (port) => {
+  const andy = createAndy(port);
+  andy.start();
+};
+
 if (require.main === module) {
-  createAndy(8080);
+  server(8080);
 }

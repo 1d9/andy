@@ -4,9 +4,22 @@ const { createServer } = require('http');
 
 const { createRoutes } = require('./routes');
 
-const createAndy = async (port/*: number*/) => {
+/*::
+type Andy = {
+  start: () => Promise<void>,
+  stop: () => Promise<void>,
+}
+*/
+
+const createAndy = (port/*: number*/)/*: Andy*/ => {
   const server = createServer(createListener(createRoutes()));
-  server.listen(port);
+  const start = () => new Promise(res => {
+    server.listen(port, () => res());
+  });
+  const stop = () => new Promise((res, rej) => {
+    server.close(err => err ? rej(err) : res());
+  });
+  return { start, stop };
 };
 
 module.exports = {
