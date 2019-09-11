@@ -15,17 +15,17 @@ const createAndy = (port/*: number*/)/*: Andy*/ => {
   const routes = createRoutes()
   const server = createServer(createListener(routes));
 
-  const start = () => new Promise(res => {
-    server.listen(port, () => {
-      const address = server.address();
-      console.log(`Listening on http://localhost:${address.port}`);
-      res();
-    });
-  });
+  const start = async () => {
+    await new Promise(r => server.listen(port, r));
+    const address = server.address();
+    console.log(`Listening on http://localhost:${address.port}`);
+  };
 
-  const stop = () => new Promise((res, rej) => {
-    server.close(err => err ? rej(err) : res());
-  });
+  const stop = async () => {
+    await new Promise((res, rej) => server.close(err => err ? rej(err) : res()));
+    server.close();
+    console.log('Server No Longer Listening');
+  };
 
   return { start, stop };
 };
