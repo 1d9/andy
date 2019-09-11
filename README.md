@@ -1,5 +1,5 @@
 # Andy
-REST Node API for rolling dice.
+Node API for rolling dice.
 
 ## Dice Notation
 Some role playing games that require some amount of randomness utilise dice of various sides, and in various amounts. There exists a format to describe an amount of dice, as well as the number of sides they have. The format is:
@@ -21,7 +21,7 @@ Start with
 node server
 ```
 
-## REST API
+## API
 ### `/roll?count=${count}&sides=${sides}`
 **Query Parameters:**
  - count: The number of Dice to roll
