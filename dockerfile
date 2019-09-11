@@ -14,5 +14,5 @@ FROM node:12-alpine
 WORKDIR /home/andy/build
 COPY --from=builder /home/andy/build .
 
-EXPOSE 80
+EXPOSE 8080
 ENTRYPOINT [ "node", "server" ]
