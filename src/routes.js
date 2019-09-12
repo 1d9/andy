@@ -32,9 +32,16 @@ const createHomeRoute = () => createRESTRoute('GET', '/', () => {
   })
 });
 
+const createFarewellRoute = () => createRESTRoute('GET', '/bye', () => {
+  return ok({
+    farewell: 'Bye! I hope you had fun rolling! Join us on Mondays or Wednesdays in Rome if you want to roll some more!',
+  })
+});
+
 const createRoutes = () => [
   createHomeRoute(),
-  createRollRoute()
+  createRollRoute(),
+  createFarewellRoute(),
 ];
 
 module.exports = {
