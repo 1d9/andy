@@ -26,7 +26,14 @@ const createRollRoute = () => createRESTRoute('GET', '/roll', query => {
   })
 });
 
+const createHomeRoute = () => createRESTRoute('GET', '/', () => {
+  return ok({
+    greeting: 'Welcome to andy! Try /roll to roll some dice!',
+  })
+});
+
 const createRoutes = () => [
+  createHomeRoute(),
   createRollRoute()
 ];
 
