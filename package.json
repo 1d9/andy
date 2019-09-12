@@ -4,7 +4,9 @@
   "description": "REST Node API for rolling dice.",
   "main": "server.js",
   "scripts": {
-    "test": "node test"
+    "preversion": "npm test",
+    "test": "node test",
+    "postversion": "git push --follow-tags"
   },
   "repository": {
     "type": "git",
