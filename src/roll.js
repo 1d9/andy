@@ -9,6 +9,11 @@ const roll = (count/*: number*/, sides/*: number*/) => {
   return dice;
 };
 
+const averageRoll = (count/*: number*/, sides/*: number*/) => {
+  return (((count * sides) + count) / 2)
+}
+
 module.exports = {
   roll,
+  averageRoll,
 };

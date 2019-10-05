@@ -1,6 +1,6 @@
 // @flow strict
 const { createRESTRoute, createRESTResponse } = require('@lukekaalim/server');
-const { roll } = require('./roll');
+const { roll, averageRoll } = require('./roll');
 
 const headers = [
   ['Content-Type', 'application/json']
@@ -26,6 +26,24 @@ const createRollRoute = () => createRESTRoute('GET', '/roll', query => {
   })
 });
 
+const createAverageRoute = () => createRESTRoute('GET', '/average', query => {
+  const count = parseInt(query.get('count'), 10);
+  const sides = parseInt(query.get('sides'), 10);
+  if (!count || !sides) {
+    return badInput('Missing ?count or ?sides query parameter');
+  }
+  if (sides % 2 === 1) {
+    return badInput('You and I both know that\'s not a die')
+  }
+  const average = averageRoll(count, sides);
+
+  return ok({
+    count,
+    sides,
+    average,
+  })
+});
+
 const createHomeRoute = () => createRESTRoute('GET', '/', () => {
   return ok({
     greeting: 'Welcome to andy! Try http://andy.1d9.tech/roll to roll some dice!',
@@ -42,6 +60,7 @@ const createRoutes = () => [
   createHomeRoute(),
   createRollRoute(),
   createFarewellRoute(),
+  createAverageRoute(),
 ];
 
 module.exports = {

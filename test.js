@@ -1,13 +1,14 @@
 // @flow strict
 const { expect, expectAll, assert, emojiReporter } = require('@lukekaalim/test');
 const { expectAndy } = require('./src/andy.test');
-const { expectRoll } = require('./src/roll.test');
+const { expectRoll, expectAverageRolls } = require('./src/roll.test');
 const { expectRoutes } = require('./src/routes.test');
 
 const test = async () => {
   const expectation = expectAll('@lukekaalim/andy should be a server that rolls dice', [
     expectAndy,
     expectRoll,
+    expectAverageRolls,
     expectRoutes,
   ]);
   const assertion = await expectation.test();
