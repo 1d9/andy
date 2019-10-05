@@ -11,7 +11,7 @@ const expectRoll = expectAll('roll() should roll n dice of y sides', [
   expect2d6,
 ]);
 const expectAverage = expect(() => {
-  return assert('2d6 averages 6.5', averageRoll(2, 6) === 6.5);
+  return assert('2d6 averages 7', averageRoll(2, 6) === 7);
 });
 
 const expectAverageRolls = expectAll('roll() should roll ', [
