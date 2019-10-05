@@ -1,6 +1,6 @@
 {
   "name": "andy",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "description": "REST Node API for rolling dice.",
   "main": "server.js",
   "scripts": {
